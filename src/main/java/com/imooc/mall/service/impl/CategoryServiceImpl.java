@@ -90,8 +90,7 @@ public class CategoryServiceImpl implements CategoryService {
   private void recursivelyFindCategories(List<CategoryVO> categoryVOList, Integer parentId) {
     List<Category> categoryList = categoryMapper.selectCategoriesByParentId(parentId);
     if (!CollectionUtils.isEmpty(categoryList)) {
-      for(int i =0; i< categoryList.size(); i++) {
-        Category category = categoryList.get(i);
+      for (Category category : categoryList) {
         CategoryVO categoryVO = new CategoryVO();
         BeanUtils.copyProperties(category, categoryVO);
         categoryVOList.add(categoryVO);
