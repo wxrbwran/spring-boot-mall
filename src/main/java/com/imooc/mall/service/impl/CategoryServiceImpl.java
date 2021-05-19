@@ -1,5 +1,7 @@
 package com.imooc.mall.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.imooc.mall.exception.ImoocMallException;
 import com.imooc.mall.exception.ImoocMallExceptionEnum;
 import com.imooc.mall.model.dao.CategoryMapper;
@@ -7,9 +9,16 @@ import com.imooc.mall.model.pojo.Category;
 import com.imooc.mall.model.request.AddCategoryReq;
 import com.imooc.mall.model.request.UpdateCategoryReq;
 import com.imooc.mall.service.CategoryService;
+import com.imooc.mall.model.vo.CategoryVO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * 描述： CategoryService实现类
@@ -59,6 +68,35 @@ public class CategoryServiceImpl implements CategoryService {
     int count = categoryMapper.deleteByPrimaryKey(id);
     if (count == 0) {
       throw new ImoocMallException(ImoocMallExceptionEnum.DELETE_FAILED);
+    }
+  }
+
+  @Override
+  public PageInfo listForAdmin(Integer pageNum, Integer pageSize) {
+    PageHelper.startPage(pageNum, pageSize, "type, order_num");
+    List<Category> categoryList = categoryMapper.selectList();
+    PageInfo pageInfo = new PageInfo<>(categoryList);
+    return pageInfo;
+  }
+
+  @Override
+  @Cacheable("listCategoryForCustomer")
+  public List<CategoryVO> listCategoryForCustomer() {
+    ArrayList<CategoryVO> categoryVOList = new ArrayList<>();
+    recursivelyFindCategories(categoryVOList, 0);
+    return  categoryVOList;
+  }
+
+  private void recursivelyFindCategories(List<CategoryVO> categoryVOList, Integer parentId) {
+    List<Category> categoryList = categoryMapper.selectCategoriesByParentId(parentId);
+    if (!CollectionUtils.isEmpty(categoryList)) {
+      for(int i =0; i< categoryList.size(); i++) {
+        Category category = categoryList.get(i);
+        CategoryVO categoryVO = new CategoryVO();
+        BeanUtils.copyProperties(category, categoryVO);
+        categoryVOList.add(categoryVO);
+        recursivelyFindCategories(categoryVO.getChildCategory(), categoryVO.getId());
+      }
     }
   }
 }
