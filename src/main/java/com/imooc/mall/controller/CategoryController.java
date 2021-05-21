@@ -87,6 +87,7 @@ public class CategoryController {
   @ResponseBody
   public ApiRestResponse listCategoryForAdmin(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
     PageInfo pageInfo = categoryService.listForAdmin(pageNum, pageSize);
+    System.out.println(pageInfo);
     return ApiRestResponse.success(pageInfo);
   }
 
@@ -94,7 +95,7 @@ public class CategoryController {
   @GetMapping("category/list")
   @ResponseBody
   public ApiRestResponse listCategoryForCustomer() {
-    List<CategoryVO> categoryVOList = categoryService.listCategoryForCustomer();
+    List<CategoryVO> categoryVOList = categoryService.listCategoryForCustomer(0);
     return ApiRestResponse.success(categoryVOList);
   }
 }

@@ -5,6 +5,7 @@ import com.imooc.mall.model.pojo.Category;
 import com.imooc.mall.model.request.AddCategoryReq;
 import com.imooc.mall.model.request.UpdateCategoryReq;
 import com.imooc.mall.model.vo.CategoryVO;
+import io.swagger.models.auth.In;
 
 import java.util.List;
 
@@ -24,5 +25,5 @@ public interface CategoryService {
 
   PageInfo listForAdmin(Integer pageNum, Integer pageSize);
 
-  List<CategoryVO> listCategoryForCustomer();
+  List<CategoryVO> listCategoryForCustomer(Integer parentId);
 }

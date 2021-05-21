@@ -32,7 +32,7 @@ public class ApiRestResponse<T> {
   public static <T> ApiRestResponse<T> success(T result) {
     ApiRestResponse<T> response = new ApiRestResponse<>();
     response.setData(result);
-    return  response;
+    return response;
   }
 
   public static <T> ApiRestResponse<T> error(Integer code, String msg) {

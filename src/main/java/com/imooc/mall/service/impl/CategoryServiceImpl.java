@@ -10,6 +10,7 @@ import com.imooc.mall.model.request.AddCategoryReq;
 import com.imooc.mall.model.request.UpdateCategoryReq;
 import com.imooc.mall.service.CategoryService;
 import com.imooc.mall.model.vo.CategoryVO;
+import io.swagger.models.auth.In;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -81,9 +82,9 @@ public class CategoryServiceImpl implements CategoryService {
 
   @Override
   @Cacheable("listCategoryForCustomer")
-  public List<CategoryVO> listCategoryForCustomer() {
+  public List<CategoryVO> listCategoryForCustomer(Integer parentId) {
     ArrayList<CategoryVO> categoryVOList = new ArrayList<>();
-    recursivelyFindCategories(categoryVOList, 0);
+    recursivelyFindCategories(categoryVOList, parentId);
     return  categoryVOList;
   }
 
