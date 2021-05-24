@@ -16,10 +16,6 @@ public class CategoryVO implements Serializable {
 
     private Integer orderNum;
 
-    private Date createTime;
-
-    private Date updateTime;
-
     private List<CategoryVO> childCategory = new ArrayList<>();
 
     public List<CategoryVO> getChildCategory() {
@@ -71,19 +67,4 @@ public class CategoryVO implements Serializable {
         this.orderNum = orderNum;
     }
 
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }
