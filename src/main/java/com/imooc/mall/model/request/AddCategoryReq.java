@@ -55,5 +55,13 @@ public class AddCategoryReq {
     this.orderNo = orderNo;
   }
 
-
+  @Override
+  public String toString() {
+    return "AddCategoryReq{" +
+        "name='" + name + '\'' +
+        ", type=" + type +
+        ", parentId=" + parentId +
+        ", orderNo=" + orderNo +
+        '}';
+  }
 }
