@@ -20,7 +20,7 @@ public class UpdateCategoryReq {
 
   private Integer parentId;
 
-  private Integer orderNum;
+  private Integer orderNo;
 
   public String getName() {
     return name;
@@ -46,12 +46,12 @@ public class UpdateCategoryReq {
     this.parentId = parentId;
   }
 
-  public Integer getOrderNum() {
-    return orderNum;
+  public Integer getorderNo() {
+    return orderNo;
   }
 
-  public void setOrderNum(Integer orderNum) {
-    this.orderNum = orderNum;
+  public void setorderNo(Integer orderNo) {
+    this.orderNo = orderNo;
   }
 
   public Integer getId() {

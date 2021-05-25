@@ -23,9 +23,14 @@
     from imooc_mall_order_item
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="selectByOrderNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from imooc_mall_order_item
+    where order_no = #{orderNo}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from imooc_mall_order_item
-    where id = #{id,jdbcType=INTEGER}
+  delete from imooc_mall_order_item
+  where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.imooc.mall.model.pojo.OrderItem">
     insert into imooc_mall_order_item (id, order_no, product_id, 

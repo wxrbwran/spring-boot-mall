@@ -14,7 +14,7 @@ public class CategoryVO implements Serializable {
 
     private Integer parentId;
 
-    private Integer orderNum;
+    private Integer orderNo;
 
     private List<CategoryVO> childCategory = new ArrayList<>();
 
@@ -59,12 +59,12 @@ public class CategoryVO implements Serializable {
         this.parentId = parentId;
     }
 
-    public Integer getOrderNum() {
-        return orderNum;
+    public Integer getorderNo() {
+        return orderNo;
     }
 
-    public void setOrderNum(Integer orderNum) {
-        this.orderNum = orderNum;
+    public void setorderNo(Integer orderNo) {
+        this.orderNo = orderNo;
     }
 
 }

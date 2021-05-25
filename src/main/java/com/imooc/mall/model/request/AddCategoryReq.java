@@ -21,7 +21,7 @@ public class AddCategoryReq {
   private Integer parentId;
 
   @NotNull(message = "订单量不能为空")
-  private Integer orderNum;
+  private Integer orderNo;
 
   public String getName() {
     return name;
@@ -47,12 +47,12 @@ public class AddCategoryReq {
     this.parentId = parentId;
   }
 
-  public Integer getOrderNum() {
-    return orderNum;
+  public Integer getorderNo() {
+    return orderNo;
   }
 
-  public void setOrderNum(Integer orderNum) {
-    this.orderNum = orderNum;
+  public void setorderNo(Integer orderNo) {
+    this.orderNo = orderNo;
   }
 
 

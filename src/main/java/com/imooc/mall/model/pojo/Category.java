@@ -11,7 +11,7 @@ public class Category {
 
     private Integer parentId;
 
-    private Integer orderNum;
+    private Integer orderNo;
 
     private Date createTime;
 
@@ -49,12 +49,12 @@ public class Category {
         this.parentId = parentId;
     }
 
-    public Integer getOrderNum() {
-        return orderNum;
+    public Integer getorderNo() {
+        return orderNo;
     }
 
-    public void setOrderNum(Integer orderNum) {
-        this.orderNum = orderNum;
+    public void setorderNo(Integer orderNo) {
+        this.orderNo = orderNo;
     }
 
     public Date getCreateTime() {
