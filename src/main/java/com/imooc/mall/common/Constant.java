@@ -31,7 +31,7 @@ public class Constant {
 
   public interface SaleStatus {
     int NOT_SALE = 0; // 商品下架状态
-    int SALe = 1; // 商品上架状态
+    int SALE = 1; // 商品上架状态
   }
 
   public interface Cart {

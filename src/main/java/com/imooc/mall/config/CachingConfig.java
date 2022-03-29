@@ -11,6 +11,7 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 
 /**
  * 描述：     缓存的配置类
+ * @author wuxiaoran
  */
 @Configuration
 @EnableCaching
